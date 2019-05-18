@@ -1,5 +1,8 @@
 package ElementyGry;
 
+import streategia.PoziomStategia;
+import streategia.Streategia;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -22,7 +25,12 @@ public class Menu {
                 menu(gracz);
                 break;
             case 2:
-                menuPostaci(gracz.getListaPostaci().get(0));
+                System.out.println("Wpisz imie postaci, ktora chcesz wybrac: ");
+                scanner.nextLine();
+                String imiePostaci = scanner.nextLine();
+                menuPostaci(gracz, gracz.getMapaPostaci().get(imiePostaci));
+                // menuPostaci(gracz,gracz.getListaPostaci().get(0));
+                //wybor postaci po imieniu
                 break;
             case 3:
 //instrukcja
@@ -37,7 +45,7 @@ public class Menu {
         }
     }
 
-    public static void menuPostaci(Postac postac) {
+    public static void menuPostaci(Gracz gracz, Postac postac) {
         System.out.println("Co chcesz dalej zrobić?");
         System.out.println("2 - aktualne staystyki postaci");
         System.out.println("3 - walka");
@@ -49,21 +57,27 @@ public class Menu {
                 System.out.println("Wybierz postac: ");
 
             case 2:
-               // System.out.println("Podaj imie postaci");
+                // System.out.println("Podaj imie postaci");
                 statystyki(postac);
-//statystyki
-//wpisac imie?
+                menuPostaci(gracz, postac);
                 break;
             case 3:
-//walka
+               // Przeciwnik przeciwnik = new Przeciwnik();
+
+                Walka.przebiegWalki(postac,PostacFabryka.stworzPrzeciwnika(postac, new PoziomStategia(postac)));
+                //System.out.println(przeciwnik);
                 break;
             case 4:
-//zmiana iienia
+                System.out.println("Wpisz nowe imie dla postaci: ");
+                scanner.nextLine();
+                postac.setImie(scanner.nextLine());
+                menuPostaci(gracz, postac);
+                break;
             case 5:
-              //  menu();
+                menu(gracz);
             default:
                 System.out.println("Wybierz cyfry od 1 lub 5");
-                menuPostaci(postac);
+                menuPostaci(gracz, postac);
         }
     }
 
@@ -77,14 +91,14 @@ public class Menu {
         int rasa = scanner.nextInt();
         switch (rasa) {
             case 1:
-                return PostacFabryka.stworzPostac(Postac.Rasa.CZLOWIEK,imie);
+                return PostacFabryka.stworzPostac(Postac.Rasa.CZLOWIEK, imie);
             case 2:
-                return PostacFabryka.stworzPostac(Postac.Rasa.ELF,imie);
+                return PostacFabryka.stworzPostac(Postac.Rasa.ELF, imie);
             case 3:
-                return PostacFabryka.stworzPostac(Postac.Rasa.KRASNOLUD,imie);
+                return PostacFabryka.stworzPostac(Postac.Rasa.KRASNOLUD, imie);
             default:
                 System.out.println("Wybierz cyfry od 1 lub 3");
-             //   tworzeniePostaci();
+                //   tworzeniePostaci();
         }
 
 //        System.out.println("Wybierz profesje:");
@@ -109,8 +123,9 @@ public class Menu {
 //gracz.statystyki();
         return null;
     }
+
     public static void statystyki(Postac postac) {
 
-       System.out.println(postac);
+        System.out.println(postac);
     }
 }

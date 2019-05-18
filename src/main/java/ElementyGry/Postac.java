@@ -42,13 +42,13 @@ public class Postac {
     //statystyki
     private int level;
     public final int maxLevel = 5;
-    private int zycie;
-    private int doswiadczenie;
-    private int sila;
-    private int obrona;
-    private int zwinnosc;
-    private int szczescie;
-    private int atak;
+    private double zycie;
+    private double doswiadczenie;
+    private double sila;
+    private double obrona;
+    private double zwinnosc;
+    private double szczescie;
+    private double atak;
 
     public int getLevel() {
         return level;
@@ -58,15 +58,15 @@ public class Postac {
         this.level = level;
     }
 
-    public int getZycie() {
+    public double getZycie() {
         return zycie;
     }
 
-    public void setZycie(int zycie) {
+    public void setZycie(double zycie) {
         this.zycie = zycie;
     }
 
-    public int getDoswiadczenie() {
+    public double getDoswiadczenie() {
         return doswiadczenie;
     }
 
@@ -74,54 +74,54 @@ public class Postac {
         this.doswiadczenie = doswiadczenie;
     }
 
-    public int getSila() {
+    public double getSila() {
         return sila;
     }
 
-    public void setSila(int sila) {
+    public void setSila(double sila) {
         this.sila = sila;
     }
 
-    public int getObrona() {
+    public double getObrona() {
         return obrona;
     }
 
-    public void setObrona(int obrona) {
+    public void setObrona(double obrona) {
         this.obrona = obrona;
     }
 
-    public int getZwinnosc() {
+    public double getZwinnosc() {
         return zwinnosc;
     }
 
-    public void setZwinnosc(int zwinnosc) {
+    public void setZwinnosc(double zwinnosc) {
         this.zwinnosc = zwinnosc;
     }
 
-    public int getSzczescie() {
+    public double getSzczescie() {
         return szczescie;
     }
 
-    public void setSzczescie(int szczescie) {
+    public void setSzczescie(double szczescie) {
         this.szczescie = szczescie;
     }
 
-    public int getAtak() {
+    public double getAtak() {
         return atak;
     }
 
-    public void setAtak(int atak) {
+    public void setAtak(double atak) {
         this.atak = atak;
     }
 
 
-    public void UpLvl() {
-        atak *= 0.2;
-        sila *= 0.2;
-        zycie *= 0.2;
-        obrona *= 0.2;
-
-    }
+//    public void UpLvl() {
+//        atak *= 0.2;
+//        sila *= 0.2;
+//        zycie *= 0.2;
+//        obrona *= 0.2;
+//
+//    }
     @Override
     public String toString() {
         return "Postac{" +
